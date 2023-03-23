@@ -1,7 +1,7 @@
-FROM gradle:7.6-jdk17-alpine
+FROM gradle:7.6-jdk11-alpine
 
 COPY . .
-RUN gradle biuld
+RUN gradle build
 
 EXPOSE 8080
 
