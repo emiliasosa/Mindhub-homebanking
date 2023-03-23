@@ -27,7 +27,7 @@ createApp({
     },
     methods:{
         loadData(){
-            axios.get(`http://localhost:8080/api/clients/current`)
+            axios.get(`/api/clients/current`)
             .then(res => {
                 this.cards = res.data.cards
                 this.creditCards = this.cards.sort((a, b) => a.id - b.id).filter(card => card.type == 'CREDIT')

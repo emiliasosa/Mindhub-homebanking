@@ -23,7 +23,7 @@ createApp({
    },
    methods:{
         loadData(){
-            axios.get("http://localhost:8080/api/clients")
+            axios.get("/api/clients")
             .then(res => {
                 this.clients = res.data
                 this.json = res.data
@@ -41,7 +41,7 @@ createApp({
             }
         },
         postClient(){
-            axios.post('http://localhost:8080/api/clients', {
+            axios.post('/api/clients', {
                 firstName: this.firstName,
                 lastName: this.lastName, 
                 email: this.email
