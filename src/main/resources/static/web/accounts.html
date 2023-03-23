@@ -230,18 +230,19 @@
                                         <span v-else @click="ocultMoney(loan.id)" style="cursor: pointer"  v-cloak>{{(loan.amountWithInterest / loan.payments).toLocaleString('en-US', {style:"currency", currency:"USD"})}}</span></p>
                                 </div>
                             </div>
-                            
-                            <div  v-if="loans.length < allLoans.length && loans.length >= 0">
-                                <div  v-for="loan of allLoans" >
-                                    <div class="one__loan__container one__loan__container-without"  v-if="loanAvailable.includes(loan.name)">
-                                        <h3 class="ttl__withoutLoan" v-cloak>{{loan.name}} LOAN</h3>
-                                        <p class="txt__withoutLoan" v-cloak>{{loan.description}}</p>
+                            <template  v-if="loans.length < allLoans.length && loans.length >= 0">
+                                <div>
+                                    <div v-for="loan of allLoans" >
+                                        <div class="one__loan__container one__loan__container-without"  v-if="loanAvailable.includes(loan.name)">
+                                            <h3 class="ttl__withoutLoan" v-cloak>{{loan.name}} LOAN</h3>
+                                            <p class="txt__withoutLoan" v-cloak>{{loan.description}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="btn_accounts_container btn__loan">
+                                        <a href="./loan-application.html" class="btn_accounts__txt btn__loan-color" style="cursor: pointer" v-cloak>I want an {{loanAvailable.toLowerCase()}} loan</a>
                                     </div>
                                 </div>
-                                <div class="btn_accounts_container btn__loan">
-                                    <a href="./loan-application.html" class="btn_accounts__txt btn__loan-color" style="cursor: pointer" v-cloak>I want an {{loanAvailable.toLowerCase()}} loan</a>
-                                </div>
-                            </div>
+                            </template>
                         </div>
                     </div>
                     
