@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="../assets/image/piggy-bank.png" type="image/x-icon">
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>HB MindHub | Transactions</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="left__nav">
+                        <img class="icon__nav" src="../assets/image/piggy-bank.png" alt="" srcset="">
+                        <a class="navbar-brand" href="#">MINDHUB HOMEBANKING</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./accounts.html">My Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./cards.html">Cards</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./payments.html">Payment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./setting.html">Setting</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link--right" @click="logOut()"  style="cursor: pointer">Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </nav>
+        </header>
+        <main  >
+            <div class="name__container mb-4">
+                <h2 v-cloak>Account: {{number}}</h2>
+            </div>
+            
+            <div class="table__container main__transactions">
+                <div class="d-flex justify-content-around ">
+    
+                    <div class="d-flex col-12 flex-column">
+                        <table class="bg-light table table-bordered " >
+                            <thead class="thead_color">
+                                <tr>
+                                    <th class="p-3 col-md-4 th__table" >
+                                        Description 
+                                        <img style="cursor: pointer" v-if="auxShowIconTableDescription" class="table__icon" @click="changeOrderAscendent('description')" src="../assets/image/down-arrow.png" alt="" srcset="">
+                                        <img style="cursor: pointer" v-if="!auxShowIconTableDescription" class="table__icon" @click="changeOrderDescendent('description')" src="../assets/image/upload.png" alt="" srcset="">
+                                    </th>
+                                    <th class="p-3 hidden__table">Hour</th>
+                                    <th class="p-3 " >
+                                        Date
+                                        <img style="cursor: pointer" v-if="auxShowIconTableDate" class="table__icon" @click="changeOrderAscendent('date')" src="../assets/image/down-arrow.png" alt="" srcset="">
+                                        <img style="cursor: pointer" v-if="!auxShowIconTableDate" class="table__icon" @click="changeOrderDescendent('date')" src="../assets/image/upload.png" alt="" srcset="">
+                                    </th>
+                                    <th class="p-3 hidden__table">Type</th>
+                                    <th class="p-3">
+                                        Amount
+                                        <img style="cursor: pointer" v-if="auxShowIconTableAmount" class="table__icon" @click="changeOrderAscendent('amount')" src="../assets/image/down-arrow.png" alt="" srcset="">
+                                        <img style="cursor: pointer" v-if="!auxShowIconTableAmount" class="table__icon" @click="changeOrderDescendent('amount')" src="../assets/image/upload.png" alt="" srcset="">
+                                    </th>
+                                    <th class="p-3 hidden__table">
+                                        Total Balance
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody v-if="allTransactions" v-for="transaction of transactions">
+                                <tr class="tr " >
+                                    <td class="p-3">
+                                       <b v-cloak>{{transaction.description}}</b> 
+                                    </td>
+                                    <td class="p-3 hidden__table">
+                                        <b v-cloak> {{transaction.date.slice(11, 16)}}</b> 
+                                        <b v-if="transaction.date.slice(11, 16) == ''">-</b>
+                                     </td>
+                                    <td class="p-3">
+                                       <b v-cloak>{{transaction.date.slice(0, 10)}}</b> 
+                                    </td>
+                                    
+                                    <td class="p-3 hidden__table" :class="transaction.type == 'DEBIT' ? 'text-danger' : 'text-success'">
+                                       <b v-cloak>{{transaction.type}}</b> 
+                                       
+                                    </td>
+                                    <td class="p-3" :class="transaction.type == 'DEBIT' ? 'text-danger' : 'text-success'">
+                                       <b v-if="transaction.type == 'DEBIT'" v-cloak>- {{transaction.amount.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</b> 
+                                       <b v-if="transaction.type == 'CREDIT'" v-cloak>+ {{transaction.amount.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</b> 
+                                       <b  v-if="transaction.type !== 'CREDIT' && transaction.type !== 'DEBIT'" v-cloak>{{transaction.amount}}</b>
+                                    </td>
+                                    <td class="p-3 hidden__table" v-if="transaction.balance">
+                                        <b v-cloak>{{transaction.balance.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</b> 
+                                    </td>
+                                    <td class="p-3 hidden__table" v-else>
+                                        <b v-cloak>{{transaction.amount}}</b> 
+                                    </td>
+                                </tr>
+                    
+                            </tbody>
+                            <tbody v-if="transactions.length == 0">
+                                <tr>
+                                    <td  class="p-3">No transactions</td>
+                                    <td  class="p-3 text-center"><b>-</b></td>
+                                    <td  class="p-3 text-center"><b>-</b></td>
+                                    <td  class="p-3 text-center"><b>-</b></td>
+                                    <td  class="p-3 text-center"><b>-</b></td>
+                                </tr>
+                            </tbody>
+                        </table>  
+                        <p class="transaction__info__txt">You can sort the transactions in ascending or descending order by clicking on the arrows next to the text.</p>
+                        <div class="btn_change_container" v-if="allTransactions.length > 5 && transactions.length !== 0">
+                            <div class="d-flex"  v-if="transactions.length !== 0 && auxPre" @click="discountTransactions()">
+                                <div class="btn_change" style="cursor: pointer">
+                                   <p><</p> 
+                                </div>
+                                <p class=" ms-2  bg-light"><b>Previous page</b></p>
+                            </div>
+                            <div></div>
+                            <div class="d-flex " v-if="transactions.length !== 0 && !auxNext" @click="addTransactions()">
+                                <p class=" me-2 bg-light"><b>Next page</b></p>
+                                <div  class="btn_change" style="cursor: pointer">
+                                   <p>></p> 
+                                </div>
+                            </div>
+                            
+                        </div> 
+                    </div>
+                    
+                </div>
+                <div class="btn_account_container"> 
+                    <div class="btn_account">
+                        <a href="./accounts.html" class="txt_btn"> Back to accounts</a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+    
+        </main>
+        <footer>
+            <div class="footer__txt__container">
+                <p class="txt__footer">@MindHub HomeBanking | </p>
+                <p class="txt__footer txt__footer--name"><a href="https://www.linkedin.com/in/emiliasosatomada/" target="_blank" class="footer__anchor"> Emilia Sosa</a></p>
+            </div>
+            <div>
+                <a href="https://github.com/emiliasosa" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/github.png" alt="">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/facebook.png" alt="">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/instagram.png" alt="">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../assets/js/account.js"></script>
+</body>
+</html>

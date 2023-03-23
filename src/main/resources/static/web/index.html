@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/image/piggy-bank.png" type="image/x-icon">
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("rlNzedtairB8FVo5o");
+    })();
+    </script>
+    <title>HomeBanking MindHub</title>
+</head>
+<body>
+    <div id="app" class="index__background">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="left__nav">
+                        <img class="icon__nav" src="../assets/image/piggy-bank.png" alt="" srcset="">
+                        <a class="navbar-brand" href="#">MINDHUB HOMEBANKING</a>
+                    </div>
+                </div>
+              </nav>
+        </header>
+        <main >
+            <div class="model__setting__container hidden__container" id="forgetPassword">
+                <div class="alert__forgetPassword alert__forgetPassword-margin">
+                    <div class="close__forgetPassword__container">
+                        <img src="../assets/image/cancelar.png" @click="forgetPassword()">
+                    </div>
+                    <h3>What's your email address?</h3>
+                    <p>Enter the email you used to register with the MindHub and we'll send you a link to reset your password.</p>
+                    <label>
+                        Email
+                        <input type="email" id="email_id">
+                    </label>
+                    <div class="signIn__p btn-8 mt-4" @click.prevent="sendEmail()"><span>Send password reset email</span></div>
+                </div>
+            </div>
+            <section class="heigth__index main__index">
+                <div id="main__content__hidden" >
+                    <h1 class="index__ttl">| MINDHUB HOMEBANKING</h1>
+                    <div class="text__animation__index__container">
+                        <div class="text__animation__index">
+                            <h2>Use it wherever you want.</h2>
+                            <h2>Use it from anywhere.</h2>
+                            <h2>Use it with whoever you want.</h2>
+                            <h2>Always at your hands.</h2>
+                        </div>
+                    </div>
+                    <div class="signIn__container" v-if="!logInAccess">
+                        <div class="signIn">
+                            <p @click="show('login')" class="signIn__p btn-8"><span>Sign in</span></p>
+                            <p class="text__describe__signIn">To enter at your homebanking. </p>
+                        </div>
+                        <div>
+                            <p @click="show('register')" class="signIn__p btn-8"><span>Register</span></p>
+                            <p class="text__describe__signIn">To register at homebanking.</p>
+                        </div>
+                    </div>
+                </div> 
+                <div>
+                    <div class="hidden__container form__container" id="login">
+                        <p class="ttl_loginRegister">| Sign in</p>
+                        <form class="form__login">
+                            <label class="form__p">Email</label>
+                            <input type="email" v-model="email" id="sigIn__email" required>
+                            <div class="error__login error__login-opacity" id="err__signin__email"></div>
+                            <label class="form__p">Password</label>
+                            <input  type="password" v-model="password"  id="sigIn__password" required>
+                            <div class="error__login error__login-opacity"  id="err__signin__password"></div>
+                            <div @click="logIn()" class="signIn__p btn-8"><span>Sign in</span></div>
+                            <p class="forget__password__txt" @click="forgetPassword()">Forget password?</p>
+                        </form>
+                        <div class="back__container">
+                            <div class="back__loginRegister" @click="show('login')"> 
+                                <img src="../assets/image/arrow.png" alt="" srcset="" class="icon__back__index">
+                                <p class="back__loginRegister__txt" >back</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden__container form__container" id="register">
+                        <p class="ttl_loginRegister">| Register</p>
+                        <form class="form__register">
+                            <label class="form__p">First name</label>
+                            <input type="text" v-model="firstName" required>
+                            <div class="error__login" v-cloak>{{errorFirstName}}</div>
+                            <label class="form__p">Last name</label>
+                            <input type="text" v-model="lastName" required>
+                            <div class="error__login" v-cloak>{{errorLastName}}</div>
+                            <label class="form__p">Email</label>
+                            <input type="email" pattern=".+@globex\.com" v-model="email" required>
+                            <div class="error__login" v-cloak>{{errorEmail}}</div>
+                            <label class="form__p">Password</label>
+                            <input type="password" v-model="password" required>
+                            <div class="error__login" v-cloak>{{errorPassword}}</div>
+                            <div @click="register()" class="signIn__p btn-8 mb-2"><span>Register</span></div>
+                        </form>
+                        <div class="back__container">
+                            <div class="back__loginRegister"  @click="show('register')"> 
+                                <img src="../assets/image/arrow.png" alt="" srcset="" class="icon__back__index">
+                                <p class="back__loginRegister__txt" >back</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </section>
+            <section class="info__section main__index" >
+                <div class="info__homebanking__index__container">
+                    <div class="info__homebanking__index" id="loans_index">
+                        <div class="info__homebanking__img">
+                            <img src="../assets/image/prestamos.jpg" alt="" srcset="">
+                        </div>
+                        <div class="info__homebanking__txt__container">
+                            <h3>Get your own loan</h3>
+                            <p>We offer three different types of loans for the particular needs you have. With the loans you can access what you need and/or have been looking for for so long, like the house of your dreams. Just one click away.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info__homebanking__index__container">
+                    <div class="info__homebanking__index margin" id="exchange_index">
+                        <div class="info__homebanking__img">
+                            <img src="../assets/image/transacciones.webp" alt="" srcset="">
+                        </div>
+                        <div class="info__homebanking__txt__container">
+                            <h3>Access and create your own accounts</h3>
+                            <p>Whether you’re a business owner who wants to analyze your financial statements or a student who wants to manage your budget, instantly being able to check your account gives you more control over your finances. With our system you will be able to create 3 accounts by yourself, and you will be able to access their status, and more.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="info__homebanking__index__container">
+                    <div class="info__homebanking__index" id="home_index">
+                        <div class="info__homebanking__img">
+                            <img src="../assets/image/comodidad.webp" alt="" srcset="">
+                        </div>
+                        <div class="info__homebanking__txt__container">
+                            <h3>Do your activities from anywhere</h3>
+                            <p>Home banking services enable customers to complete banking activities from the comfort of their homes. Customers no longer need to visit their bank’s physical branch in person. It is especially convenient for customers who have difficulty traveling to banks’ physical premises.  </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+           
+            
+        </main>
+        <footer>
+            <div class="footer__txt__container">
+                <p class="txt__footer">@MindHub HomeBanking | </p>
+                <p class="txt__footer txt__footer--name"><a href="https://www.linkedin.com/in/emiliasosatomada/" target="_blank" class="footer__anchor"> Emilia Sosa</a></p>
+            </div>
+            <div>
+                <a href="https://github.com/emiliasosa" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/github.png" alt="">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/facebook.png" alt="">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/instagram.png" alt="">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../assets/js/index.js"> </script>
+    
+</body>
+</html> 

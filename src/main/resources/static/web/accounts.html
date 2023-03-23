@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="shortcut icon" href="../assets/image/piggy-bank.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <title>HB MindHub | Account</title>
+</head>
+<body >
+    <div  id="app" v-cloak>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="left__nav">
+                        <img class="icon__nav" src="../assets/image/piggy-bank.png" alt="" srcset="">
+                        <a class="navbar-brand" href="#">MINDHUB HOMEBANKING</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1">
+                                <li class="nav-item ">
+                                    <a class="nav-link nav-active" href="#">My Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./cards.html">Cards</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./payments.html">Payment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./setting.html">Setting</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link--right" @click="logOut()"  style="cursor: pointer">Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </nav>
+        </header>
+        <main>
+            <div class="model__setting__container   hidden__container"  id="alertCreatedCard">
+                <div class="alert__forgetPassword model__setting-accounts">
+                    <div class="close__forgetPassword__container">
+                        <img src="../assets/image/cancelar.png" @click="hiddenAlert('alertCreatedCard')">
+                    </div>
+                    <div class="alert__createdCard" id="alertInnerMessage">
+                        <div id="alertInnerLottie" class="d-flex flex-column align-items-center">
+                        </div>
+                        <div class="btn__alert__setting" id="questionYesOrNo">
+                            <p @click="questionCreatedCardResponse('true')" class="signIn__p signIn__p-setting  btn-8"><span>Yes</span></p>
+                            <p @click="questionCreatedCardResponse('false')" class="signIn__p signIn__p-setting  btn-8-red"><span>No</span></p>
+                        </div>
+                    </div>
+                    <div class="alert__createdCard hidden__container" id="alertInnerMessageCreateAccount">
+                        <div id="alertInnerLottie" class="d-flex flex-column align-items-center mb-4">
+                            <p>Select account type</p>
+                            <select v-model="type">
+                                <option selected value="CURRENT" >CURRENT</option>
+                                <option value="SAVING">SAVING</option>
+                            </select>
+                        </div>
+                        <div class="btn__alert__setting">
+                            <p @click="questionCreatedCardResponse('true', 'add')" class="signIn__p signIn__p-setting  btn-8"><span>CREATE</span></p>
+                            <p @click="questionCreatedCardResponse('false', 'add')" class="signIn__p signIn__p-setting  btn-8-red"><span>CANCEL</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="name__container">
+                <div>
+                    <p class="welcome__txt">Hello, Welcome</p>
+                    <p class="welcome__txt__name"  v-cloak>{{firstName}} {{lastName}}</p>
+                </div>
+                <div class="container__picture__name">
+                    <p v-if="!picture" class="container__picture__name__txt"  v-cloak>{{firstName.slice(0,1)}} {{lastName.slice(0,1)}}</p>
+                    <img v-if="picture" class="picture__name__welcome" :src="picture" alt="">
+                </div>  
+            </div>
+            
+            <div class="container__main">
+                
+                <div class="cards__loans__container">
+                    <div class="addAccount__container">
+                        <h2 class="accounts__title">| Accounts</h2>
+                        <div class="btn__addAccount__accounts" v-if="accounts.length < 3" @click="showQuestion('add')">
+                            <span >Create a new account</span>
+                        </div>
+                    </div>
+                    <div class="slider__btn slider__left" @click="slider('left')" id="btn__left"><p> &#60</p></div>
+                    <div class="slider__btn slider__rigth" @click="slider('rigth')" id="btn__rigth"><p>&#62</p> </div>
+                    <div class="cards__container" id="cards__container" v-if="accounts">
+                        <div class="cards__carrusel" id="carrusel" v-for="account of finalAccounts">
+                            <div class="card__one__container">
+                                <div class="card" >
+                                    <div class="card__info">
+                                        <p class="title__account"  v-cloak>ACCOUNT Nº {{account.number}} </p>
+                                        <div class="number__container" v-if="auxMoney">
+                                            <p class="number__txt">Money: $*******</p>
+                                            <img @click="seeMoney(account.id)"  v-cloak class="eye__icon" src="../assets/image/hide.png" alt="" srcset="">
+                                        </div>
+                                        <div v-else class="number__container" >
+                                            <p class="number__txt"  v-cloak>Money: {{account.balance.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</p>
+                                            <img  @click="ocultMoney(account.id)" class="eye__icon" src="../assets/image/view.png" alt="" srcset="">
+                                        </div>
+                                        <p class="mt-3"  v-cloak>Account type: {{account.type.toLowerCase()}} - {{account.typeOfMoney}}</p> 
+                                        <div class="d-flex justify-content-between date__container">
+                                            <p  v-cloak>Date: {{account.date.slice(0, 10)}}</p>
+                                            <p  v-cloak>Hour: {{account.date.slice(11, 16)}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+                                    <defs>
+                                        <linearGradient id="bg">
+                                            <stop offset="0%" style="stop-color:rgba(130, 158, 249, 0.06)"></stop>
+                                            <stop offset="50%" style="stop-color:rgba(76, 190, 255, 0.6)"></stop>
+                                            <stop offset="100%" style="stop-color:rgba(115, 209, 72, 0.2)"></stop>
+                                        </linearGradient>
+                                        <path id="wave" fill="url(#bg)" d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
+                                        s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z" />
+                                    </defs>
+                                    <g>
+                                        <use xlink:href='#wave' opacity=".3">
+                                            <animateTransform attributeName="transform"
+                                        attributeType="XML"
+                                        type="translate"
+                                        dur="10s"
+                                        calcMode="spline"
+                                        values="270 230; -334 180; 270 230"
+                                        keyTimes="0; .5; 1"
+                                        keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                                        repeatCount="indefinite" />
+                                        </use>
+                                        <use xlink:href='#wave' opacity=".6">
+                                            <animateTransform
+                                        attributeName="transform"
+                                        attributeType="XML"
+                                        type="translate"
+                                        dur="8s"
+                                        calcMode="spline"
+                                        values="-270 230;243 220;-270 230"
+                                        keyTimes="0; .6; 1"
+                                        keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                                        repeatCount="indefinite" />
+                                        </use>
+                                        <use xlink:href='#wave' opacty=".9">
+                                            <animateTransform
+                                        attributeName="transform"
+                                        attributeType="XML"
+                                        type="translate"
+                                        dur="6s"
+                                        calcMode="spline"
+                                        values="0 230;-140 200;0 230"
+                                        keyTimes="0; .4; 1"
+                                        keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+                                        repeatCount="indefinite" />
+                                        </use>
+                                    </g>
+                                    </svg>
+                                </div> 
+                            </div>
+                            
+                            <div class="requesTransaction__container">
+                                <div class="request__container__alldivs">
+                                    <div class="request__containers" @click="redirectTransfer(account.id)">
+                                        <div class="request__img__container request__img">
+                                            <img class="request__img__icon" src="../assets/image/coin.png" alt="" srcset="">
+                                        </div>
+                                        <div class="line__fortxt__request"></div>
+                                        <p class="request__txt">Send</p>
+                                    </div>
+                                    <div class="request__containers">
+                                        <div class="request__img__container request__img">
+                                            <img class="request__img__icon" src="../assets/image/currency-exchange.png" alt="" srcset="">
+                                        </div>
+                                        <div class="line__fortxt__request"></div>
+                                        <a :href="'./exchange.html?id=' + account.id" class="request__txt">Exchange</a>
+                                    </div>
+                                    <div class="request__containers request__containers-extra">
+                                        <div class="request__img__container request__img">
+                                            <img class="request__img__icon" src="../assets/image/profits.png" alt="" srcset="">
+                                        </div>
+                                        <div class="line__fortxt__request"></div>
+                                        <a :href="'./account.html?id=' + account.id" class="request__txt ">Transactions </a>
+                                    </div>
+                                    <div class="request__containers request__containers-extra" v-if="accounts.length > 1" @click="showQuestion('delete',account.id)">
+                                        <div class="request__img__container request__img">
+                                            <img class="request__img__icon request__img__icon-extra" src="../assets/image/delete.png" alt="" srcset="">
+                                        </div>
+                                        <div class="line__fortxt__request"></div>
+                                        <p class="request__txt">Delete</p>
+                                    </div>
+                                </div>
+                            </div>         
+                        </div>
+                    </div>
+                    
+                    <div class="account__numberInfo">
+                        <p  class="account__numberInfo__txt"  v-cloak> {{firstName}} you are viewing your account {{numberActualAccount}} of {{accounts.length}}.</p>
+                        <p>Click on the arrow to move through them.</p>
+                    </div>
+            
+                    <h2 class="accounts__title">| Loans</h2>
+                    <div class="d-flex justify-content-center loans">
+                        <div class="loans__container">
+                            <p class="txt__loan__name"  v-cloak>{{firstName}}, you have <b>{{loans.length}}</b> active loans.</p>
+                            <div  v-for="loan of loans" v-if="loans.length > 0" >
+                                <div class="one__loan__container">
+                                    <p class="col-3"  v-cloak><b>Loan Type:</b><br> {{loan.name}}</p>
+                                    <p class="col-3"><b>Amount:</b><br>
+                                        <span v-if="auxMoney" @click="seeMoney(loan.id)" style="cursor: pointer">$*******</span>
+                                        <span v-else @click="ocultMoney(loan.id)" style="cursor: pointer"  v-cloak>{{loan.amount.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</span></p>
+                                    <p class="col-2"  v-cloak><b>Payment:</b><br> {{loan.payments}}</p>
+                                    <p class="col-3"><b>Each payment:</b><br>
+                                        <span v-if="auxMoney" @click="seeMoney(loan.id)" style="cursor: pointer">$*******</span>
+                                        <span v-else @click="ocultMoney(loan.id)" style="cursor: pointer"  v-cloak>{{(loan.amountWithInterest / loan.payments).toLocaleString('en-US', {style:"currency", currency:"USD"})}}</span></p>
+                                </div>
+                            </div>
+                            
+                            <div  v-if="loans.length < allLoans.length && loans.length >= 0">
+                                <div  v-for="loan of allLoans" >
+                                    <div class="one__loan__container one__loan__container-without"  v-if="loanAvailable.includes(loan.name)">
+                                        <h3 class="ttl__withoutLoan" v-cloak>{{loan.name}} LOAN</h3>
+                                        <p class="txt__withoutLoan" v-cloak>{{loan.description}}</p>
+                                    </div>
+                                </div>
+                                <div class="btn_accounts_container btn__loan">
+                                    <a href="./loan-application.html" class="btn_accounts__txt btn__loan-color" style="cursor: pointer" v-cloak>I want an {{loanAvailable.toLowerCase()}} loan</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <img class="img__main" src="../assets/image/HomeBanking.jpg" alt="">
+            </div>
+            
+            
+        </main>
+        <footer>
+            <div class="footer__txt__container">
+                <p class="txt__footer">@MindHub HomeBanking | </p>
+                <p class="txt__footer txt__footer--name"><a href="https://www.linkedin.com/in/emiliasosatomada/" target="_blank" class="footer__anchor"> Emilia Sosa</a></p>
+            </div>
+            <div>
+                <a href="https://github.com/emiliasosa" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/github.png" alt="">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/facebook.png" alt="">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/instagram.png" alt="">
+                </a>
+            </div>
+        </footer>
+        
+    </div>
+    
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../assets/js/accounts.js"></script>
+</body>
+</html> 

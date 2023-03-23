@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="../assets/image/piggy-bank.png" type="image/x-icon">
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>HB MindHub | Loan</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="left__nav">
+                        <img class="icon__nav" src="../assets/image/piggy-bank.png" alt="" srcset="">
+                        <a class="navbar-brand" href="#">MINDHUB HOMEBANKING</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./accounts.html">My Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./cards.html">Cards</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./payments.html">Payment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./setting.html">Setting</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link--right" @click="logOut()"  style="cursor: pointer">Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </nav>
+        </header>
+        <main class="main__setting">
+            <div class="model__setting__container hidden__container"  id="alertCreatedCard">
+                <div class="alert__forgetPassword ">
+                    <div class="close__forgetPassword__container">
+                        <img src="../assets/image/cancelar.png" @click="hiddenAlert('alertCreatedCard')">
+                    </div>
+                    <div class="alert__createdCard" id="alertInnerMessage">
+                        <div id="alertInnerLottie"  class="d-flex flex-column align-items-center">
+                           
+                        </div>
+                        <p v-if="paymentSelected" class="secundary__text__alert text-center text-danger" id="applyQuestion"><b> You're appling with {{this.paymentSelected}} payments of<br> {{this.eachPaymentToPay}} each one.</b></p>
+                        <div class="btn__alert__setting" id="questionYesOrNo">
+                            <p @click="questionCreatedCardResponse('true')" class="signIn__p signIn__p-setting  btn-8"><span>Yes</span></p>
+                            <p @click="questionCreatedCardResponse('false')" class="signIn__p signIn__p-setting  btn-8-red"><span>No</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="name__container">
+                <div>
+                    <p class="welcome__txt">Hello, Welcome</p>
+                    <p class="welcome__txt__name"v-cloak>{{name}}</p>
+                </div>
+                <div class="container__picture__name">
+                    <p v-if="!picture" class="container__picture__name__txt"v-cloak>{{firstName.slice(0,1)}} {{lastName.slice(0,1)}}</p>
+                    <img v-if="picture" class="picture__name__welcome" :src="picture" alt="">
+                </div>  
+            </div>
+            <div class="img__form__container__setting">
+                <div class="setting__img__container">
+                    <img class="setting__img " src="../assets/image/loan.jpg" alt="">
+                </div>
+                <div class="form__container__setting">
+                    <h2 class="account__title setting__title">| Get a<span v-if="selectLoan == 'Auto'">n</span> <span v-if="selectLoan" v-cloak>{{selectLoan.toLowerCase()}}</span> loan</h2>
+                    <form id="form" class="form__setting">
+                        <label class="form__p">Select a loan</label>
+                        <div class="d-flex mb-3">
+                            <div v-for="loan of allLoans" class="padding-loan">
+                                <div class="form-check" >
+                                    <label >{{loan.name.slice(0,1) + loan.name.slice(1).toLowerCase()}} loan</label>
+                                    <input class="form-check-input "  type="radio"  @click="showLoanInfo(loan.name)" :id="loan.name">
+                                </div>
+                            </div>                         
+                            
+                        </div>
+                        <div class="secundary__text__form secundary__text__form--margin"><p class="secundary__text__form mt-1 text-danger mb-3" v-if="selectLoan ">The {{selectLoan.toLowerCase()}} loan have an {{interest}}% of interest.</p></div>
+                        <div class="secundary__text__form secundary__text__form--margin text-danger" v-if="haveLoans"> 
+                            <p class="form__p__secundary" v-if="!haveLoans"  v-cloak>You already have {{haveLoansToShow}} loan. <span class="secundary__text__form mt-1" v-if="selectLoan">The {{selectLoan.toLowerCase()}} loan have an {{interest}}% of interest.</span></p>
+                        </div>
+                        <div id="ownAccount" class="ownAccount__select mt-1">
+                            <label class="form__p">Select a payment.</label>
+                            <select v-model="paymentSelected"  >
+                                <option v-for="payment of payments" :value="payment" v-cloak>{{payment}}</option>
+                            </select>
+                        </div>
+                        <label class="form__p mt-2">Amount you need</label>
+                        <p class="secundary__text__form" v-if="selectLoan && amount < maxAmount"v-cloak>You can request a maximum amount of <b>{{maxAmount.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</b>.</p>
+                        <p v-if="amount > maxAmount && selectLoan" class=" secundary__text__form text-danger"v-cloak>You exceeded the limit of the amount to request {{amount}}. The limit is <b>{{maxAmount.toLocaleString('en-US', {style:"currency", currency:"USD"})}}</b></p>
+                        <input type="number" v-model="amount" >
+                        <label class="form__p mt-2">Destination account.</label>
+                        <select v-model="accountReceives" >
+                            <option v-for="account of accounts" :value="account"v-cloak>{{account}}</option>
+                        </select>                        
+                        <div class="error__login"v-cloak>{{error}}</div>
+                        <div class="d-flex gap-3">
+                            <button @click.prevent="calculatePayment()" class="btn__signIn">Calculate</button>
+                            <button @click.prevent="showQuestion()" class="btn__signIn">Apply loan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer__txt__container">
+                <p class="txt__footer">@MindHub HomeBanking | </p>
+                <p class="txt__footer txt__footer--name"><a href="https://www.linkedin.com/in/emiliasosatomada/" target="_blank" class="footer__anchor"> Emilia Sosa</a></p>
+            </div>
+            <div>
+                <a href="https://github.com/emiliasosa" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/github.png" alt="">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/facebook.png" alt="">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/instagram.png" alt="">
+                </a>
+            </div>
+        </footer>
+        
+    </div>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../assets/js/loan-application.js"></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="../assets/image/piggy-bank.png" type="image/x-icon">
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>HB MindHub | Cards</title>
+</head>
+<body>
+    <div  id="app" v-cloak>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="left__nav">
+                        <img class="icon__nav" src="../assets/image/piggy-bank.png" alt="" srcset="">
+                        <a class="navbar-brand" href="#">MINDHUB HOMEBANKING</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./accounts.html">My Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Cards</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./payments.html">Payment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./setting.html">Setting</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="nav-link nav-link--right" @click="logOut()"  style="cursor: pointer">Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </nav>
+        </header>
+        <main>
+            <div class="model__setting__container   hidden__container"  id="alertCreatedCard">
+                <div class="alert__forgetPassword model__setting-accounts">
+                    <div class="close__forgetPassword__container">
+                        <img src="../assets/image/cancelar.png" @click="hiddenAlert('alertCreatedCard')">
+                    </div>
+                    <div class="alert__createdCard" id="alertInnerMessage">
+                        <div id="alertInnerLottie" class="d-flex flex-column align-items-center">
+                        </div>
+                        <div class="btn__alert__setting" id="questionYesOrNo">
+                            <p @click="questionCreatedCardResponse('true')" class="signIn__p signIn__p-setting  btn-8"><span>Yes</span></p>
+                            <p @click="questionCreatedCardResponse('false')" class="signIn__p signIn__p-setting  btn-8-red"><span>No</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="name__container">
+                <div>
+                    <p class="welcome__txt">Hello, Welcome</p>
+                    <p class="welcome__txt__name" v-cloak>{{firstName}} {{lastName}}</p>
+                </div>
+                <div class="container__picture__name">
+                    <p v-if="!picture" class="container__picture__name__txt" v-cloak>{{firstName.slice(0,1)}} {{lastName.slice(0,1)}}</p>
+                    <img v-if="picture" class="picture__name__welcome" :src="picture" alt="">
+                </div>             
+            </div>
+            <div class="main__debitcredit__container">
+                <div class="cards__debitcredit__container">
+                    <div class="addAccount__container">
+                        <h2 class="accounts__title">| Debit Cards</h2>
+                        <div class="btn__addAccount__accounts" v-if="cards.length < 6">
+                            <a class="btn__addAccount__accounts-a" href="./create-cards.html">New card</a>
+                        </div>
+                    </div>
+                    <div class="debit__card__container"  v-if="debitCards.length > 0">
+                        <div class="slider__btn__creditdebit slider__creditdebit__left" @click="sliderCreditDebit('left', 'carrusel__debitCard__container', 'carrusel__debitCard', 'debit')" id="btn__creditdebit__left"> &#60</div>
+                        <div class="slider__btn__creditdebit slider__creditdebit--rigth" @click="sliderCreditDebit('rigth', 'carrusel__debitCard__container', 'carrusel__debitCard', 'debit')" id="btn__creditdebit__rigth">&#62</div>
+                        <div class="cards__container" id="carrusel__debitCard__container" >
+                            <div class="flip__card cards__carrusel " id="carrusel__debitCard" v-for="card of debitCards" >
+                                <div class="solo__card" v-if="card.thruDate > date" >
+                                    <div class="front__card" :class="card.color == 'GOLD'? 'solo__card-gold' : none || card.color == 'SILVER' ? 'solo__card-silver' : none || card.color == 'TITANIUM' ? 'solo__card-titanium' : none">
+                                        <div class="d-flex justify-content-end card__type__container">
+                                            <p class="card__type__txt" v-cloak>{{card.type}}</p>
+                                        </div>
+                                        <p class="number__card" v-cloak>{{card.number}}</p>
+                                        <div class="text__front__card">
+                                            <div>
+                                                <P class="txt__front" v-cloak>{{card.cardHolder}}</P>
+                                                <div class="d-flex align-items-center">
+                                                    <P class="txt__front txt__front-exp">EXPIRES</P>
+                                                    <P class="txt__front" v-cloak>{{card.thruDate}} </P>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img src="../assets/image/mastercard.png" alt="" srcset="" class="type__icon__card">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back__card" :class="card.color == 'GOLD' ? 'solo__card__back-gold' : none || card.color == 'SILVER' ? 'solo__card__back-silver' : none || card.color == 'TITANIUM' ? 'solo__card__back-titanium' : none">
+                                        <div class="magnetic__line__card"></div>
+                                        <p class="cvv__text">cvv</p>
+                                        <div class="cvv__card__container">
+                                            <div class="cvv__card" v-cloak>{{card.cvv}}</div>
+                                        </div>
+                                        <div class="text__back__card">
+                                            <p>This card is property of MindHub Bank. Misuse is criminal offence. If found, please return to MinHub Bank or to the nearest bank with  or Visa logo.</p>
+                                            <p>Use of this card is subject to the credit card agreement.</p>
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="solo__card "  v-if="card.thruDate < date" >
+                                    <div class="front__card solo__card-grey ">
+                                        <div class="d-flex justify-content-end card__type__container">
+                                            <p class="card__type__txt opacity__expired" v-cloak>{{card.type}}</p>
+                                        </div>
+                                        <p class="number__card opacity__expired" v-cloak>{{card.number}}</p>
+                                        <div class="text__front__card ">
+                                            <div>
+                                                <P class="txt__front opacity__expired" v-cloak>{{card.cardHolder}}</P>
+                                                <div class="d-flex align-items-center text__expired">
+                                                    <P class="txt__front txt__front-exp"><b> EXPIRES</b></P>
+                                                    <P class="txt__front" v-cloak><b> {{card.thruDate}} </b></P>
+                                                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_jtzitddf.json"  background="transparent"  speed="1"  style="width: 30px; height:30px;"  loop autoplay></lottie-player>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img src="../assets/image/mastercard.png" alt="" srcset="" class="type__icon__card">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back__card solo__card-grey opacity__expired">
+                                        <div class="magnetic__line__card"></div>
+                                        <p class="cvv__text">cvv</p>
+                                        <div class="cvv__card__container">
+                                            <div class="cvv__card" v-cloak>{{card.cvv}}</div>
+                                        </div>
+                                        <div class="text__back__card">
+                                            <p>This card is property of MindHub Bank. Misuse is criminal offence. If found, please return to MinHub Bank or to the nearest bank with  or Visa logo.</p>
+                                            <p>Use of this card is subject to the credit card agreement.</p>
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="requesTransaction__container-card">
+                                    <div class="request__container__alldivs">
+                                        <div class="request__containers request__containers-cards" @click="claimedCard(card.number)">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon" src="../assets/image/claimed.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Claim card</p>
+                                        </div>
+                                        <div class="request__containers request__containers-cards request__containers-disable" v-if="card.thruDate > date">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon" src="../assets/image/renew.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Renew card</p>
+                                        </div>
+                                        <div class="request__containers request__containers-cards" @click="renewCard(card.number)" v-if="card.thruDate < date">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <lottie-player class="black__alert" src="https://assets10.lottiefiles.com/private_files/lf30_jtzitddf.json"  background="transparent"  speed="1"  style="width: 30px; height:30px;"  loop autoplay></lottie-player>
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Renew card</p>
+                                        </div>
+                                        <div class="request__containers request__containers-cards request__containers-disable">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon" src="../assets/image/stolen.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Lost/stolen</p>
+                                        </div>
+                                        <div class="request__containers request__containers-cards request__containers-extra" @click="showQuestion('delete',card.number)">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon request__img__icon-extra" src="../assets/image/delete.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Delete card</p>
+                                        </div>
+                                    </div>
+                                </div>         
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div v-if="debitCards.length == 0" class="without__card">
+                        <p>You don't have debit cards.</p>
+                        <p  class="without__card__txt-secundary">Click on the button <b> "create new card"</b> to have a new one.</p> 
+                    </div>
+                    <div class="account__numberInfo">
+                        <p  class="account__numberInfo__txt" v-cloak> {{firstName}} you are viewing your debit card {{debitActualCard}} of {{debitCards.length}}.</p>
+                        <p>Click on the arrow to move through them.</p>
+                    </div>
+                        
+                    <div class="addAccount__container">
+                        <h2 class="accounts__title">| Credit Cards</h2>
+                    </div>
+                    <div class="debit__card__container" v-if="creditCards.length > 0">
+                        <div class="slider__btn__creditdebit slider__creditdebit__left" @click="sliderCreditDebit('left', 'carrusel__creditCard__container', 'carrusel__creditCard', 'credit')" id="btn__creditdebit__left" style="cursor: pointer">&#60</div>
+                        <div class="slider__btn__creditdebit slider__creditdebit--rigth" @click="sliderCreditDebit('rigth', 'carrusel__creditCard__container', 'carrusel__creditCard', 'credit')" id="btn__creditdebit__rigth" style="cursor: pointer">&#62</div>
+                        <div class="cards__container" id="carrusel__creditCard__container" >
+                            <div class=" flip__card cards__carrusel" id="carrusel__creditCard" v-for="card of creditCards">
+                                <div class="solo__card"  v-if="card.thruDate > date" >
+                                    <div class="front__card" :class="card.color == 'GOLD' ? 'solo__card-gold' : none || card.color == 'SILVER' ? 'solo__card-silver' : none || card.color == 'TITANIUM' ? 'solo__card-titanium' : none">
+                                        <div class="d-flex justify-content-end card__type__container">
+                                            <p class="card__type__txt" v-cloak>{{card.type}}</p>
+                                        </div>
+                                        <p class="number__card" v-cloak>{{card.number}}</p>
+                                        <div class="text__front__card">
+                                            <div>
+                                                <P class="txt__front" v-cloak>{{card.cardHolder}}</P>
+                                                <div class="d-flex align-items-center">
+                                                    <P class="txt__front txt__front-exp">EXPIRES</P>
+                                                    <P class="txt__front" v-cloak>{{card.thruDate}} </P>
+                                                </div>
+                                                
+                                            </div>
+                                            <div>
+                                                <img src="../assets/image/mastercard.png" alt="" srcset="" class="type__icon__card">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back__card" :class="card.color == 'GOLD' ? 'solo__card__back-gold' : none || card.color == 'SILVER' ? 'solo__card__back-silver' : none || card.color == 'TITANIUM' ? 'solo__card__back-titanium' : none">
+                                        <div class="magnetic__line__card"></div>
+                                        <p class="cvv__text">cvv</p>
+                                        <div class="cvv__card__container">
+                                            <div class="cvv__card" v-cloak>{{card.cvv}}</div>
+                                        </div>
+                                        <div class="text__back__card">
+                                            <p>This card is property of MindHub Bank. Misuse is criminal offence. If found, please return to MinHub Bank or to the nearest bank with  or Visa logo.</p>
+                                            <p>Use of this card is subject to the credit card agreement.</p>
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="solo__card"  v-if="card.thruDate < date" >
+                                    <div class="front__card" :class="card.color == 'GOLD' ? 'solo__card-gold' : none || card.color == 'SILVER' ? 'solo__card-silver' : none || card.color == 'TITANIUM' ? 'solo__card-titanium' : none">
+                                        <div class="d-flex justify-content-end card__type__container">
+                                            <p class="card__type__txt" v-cloak>{{card.type}}</p>
+                                        </div>
+                                        <p class="number__card" v-cloak>{{card.number}}</p>
+                                        <div class="text__front__card">
+                                            <div>
+                                                <P class="txt__front" v-cloak>{{card.cardHolder}}</P>
+                                                <div class="d-flex align-items-center">
+                                                    <P class="txt__front txt__front-exp">EXPIRES</P>
+                                                    <P class="txt__front" v-cloak>{{card.thruDate}} </P>
+                                                </div>
+                                                
+                                            </div>
+                                            <div>
+                                                <img src="../assets/image/mastercard.png" alt="" srcset="" class="type__icon__card">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back__card" :class="card.color == 'GOLD' ? 'solo__card__back-gold' : none || card.color == 'SILVER' ? 'solo__card__back-silver' : none || card.color == 'TITANIUM' ? 'solo__card__back-titanium' : none">
+                                        <div class="magnetic__line__card"></div>
+                                        <p class="cvv__text">cvv</p>
+                                        <div class="cvv__card__container">
+                                            <div class="cvv__card" v-cloak>{{card.cvv}}</div>
+                                        </div>
+                                        <div class="text__back__card">
+                                            <p>This card is property of MindHub Bank. Misuse is criminal offence. If found, please return to MinHub Bank or to the nearest bank with  or Visa logo.</p>
+                                            <p>Use of this card is subject to the credit card agreement.</p>
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="requesTransaction__container-card">
+                                    <div class="request__container__alldivs">
+                                        <div class="request__containers request__containers-cards" @click="claimedCard(card.number)">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon" src="../assets/image/claimed.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Claim card</p>
+                                        </div>
+                                        <div class="request__containers request__containers-disable request__containers-cards" v-if="card.thruDate > date">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon" src="../assets/image/renew.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Renew card</p>
+                                        </div>
+                                        <div class="request__containers request__containers-cards" @click="renewCard(card.number)" v-if="card.thruDate < date">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <lottie-player class="black__alert" src="https://assets10.lottiefiles.com/private_files/lf30_jtzitddf.json"  background="transparent"  speed="1"  style="width: 30px; height:30px;"  loop autoplay></lottie-player>
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Renew card</p>
+                                        </div>
+                                        <div class="request__containers  request__containers-cards request__containers-disable">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon" src="../assets/image/stolen.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Lost/stolen</p>
+                                        </div>
+                                        <div class="request__containers request__containers-extra request__containers-cards" @click="showQuestion('delete',card.number)">
+                                            <div class="request__img__container request__img request__img-card">
+                                                <img class="request__img__icon request__img__icon-extra" src="../assets/image/delete.png" alt="" srcset="">
+                                            </div>
+                                            <div class="line__fortxt__request"></div>
+                                            <p class="request__txt">Delete card</p>
+                                        </div>
+                                    </div>
+                                </div>         
+                            </div>
+                            
+                        </div>
+                    </div> 
+                    <div v-if="creditCards.length == 0" class="without__card">
+                        <p>You don't have credit cards.</p>
+                        <p class="without__card__txt-secundary">Click on the button <b> "create new card"</b> to have a new one.</p> 
+                    </div>
+                    <div class="account__numberInfo">
+                        <p  class="account__numberInfo__txt" v-cloak> {{firstName}} you are viewing your credit card {{creditActualCard}} of {{creditCards.length}}.</p>
+                        <p>Click on the arrow to move through them.</p>
+                    </div>        
+                </div>
+                <div class="creditdebit__left">
+                    <img class="creditdebit__left__img" src="../assets/image/creditdebitpic.jpg" alt="">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer__txt__container">
+                <p class="txt__footer">@MindHub HomeBanking | </p>
+                <p class="txt__footer txt__footer--name"><a href="https://www.linkedin.com/in/emiliasosatomada/" target="_blank" class="footer__anchor"> Emilia Sosa</a></p>
+            </div>
+            <div>
+                <a href="https://github.com/emiliasosa" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/github.png" alt="">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/facebook.png" alt="">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="footer__anchor">
+                    <img class="footer__logo" src="../assets/image/instagram.png" alt="">
+                </a>
+            </div>
+        </footer>
+        
+    </div>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../assets/js/cards.js"></script>
+</body>
+</html> 

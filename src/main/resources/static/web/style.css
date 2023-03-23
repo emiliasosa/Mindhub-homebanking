@@ -1,0 +1,2775 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+ 
+}
+
+ 
+
+body{
+    background-color: #0a0a0a;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230e4166' fill-opacity='0.04'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    /*background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-abstract-background-with-futuristic-style-use-business-cover-banner_7505-1828.jpg?w=2000");*/
+    /*background-image: url("https://img.freepik.com/free-vector/seamless-white-interlaced-rounded-arc-patterned-background_53876-97975.jpg?w=2000");*/
+    /*background-image: url("https://img.freepik.com/free-vector/abstract-background-with-monochrome-low-poly-design_1048-14453.jpg?w=2000");*/ 
+}
+
+.container__main{
+    position: relative;
+}
+main{
+    overflow: hidden;
+    position: relative;
+}
+
+[v-cloak] {
+    display: none;
+  }
+
+.main__transactions{
+    padding: 0 1rem;
+    height: 39rem;
+}
+
+.transaction__info__txt{
+    margin: 0;
+    margin-top: -.5rem;
+    margin-bottom: .5rem;
+}
+
+.navbar{
+    height: 10vh;
+    background-color:rgba(74, 79, 158, 0.86) !important;
+    padding: 0 1.5rem;
+    border-radius: 0 0 2rem 2rem;
+}
+
+nav{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.nav-link{
+    --bs-nav-link-color: #0e4166;       
+}
+
+.nav-link--right{
+    padding-right: 0 !important;
+}
+
+.nav-link:hover{
+    color: #000000 !important;
+}
+
+.nav-active{
+    color: #000000 !important;
+}
+
+
+
+.navbar-brand{
+    color: white !important;
+    font-size: 1rem !important;
+}
+
+.navbar-toggler{
+    border: none !important;
+}
+
+.navbar-toggler-icon{
+    width: 1.7rem !important;
+    height: 1.7rem !important;
+    border: none !important;
+}
+.nav__position{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left__nav{
+    display: flex;
+    align-items: center ;
+}
+
+.icon__nav{
+    height: 6vh;
+    margin-right: .5rem;
+    filter:  invert(1);
+}
+
+.img__main{
+    display: none;
+}
+
+
+.offcanvas{
+    --bs-offcanvas-width: 200px !important;
+}
+.offcanvas-header{
+    justify-content: end !important;
+}
+
+.text-bg-dark {
+    color: rgba(74, 79, 158, 0.86)!important;
+    background-color: white!important;
+}
+
+.cards__loans__container{
+    margin: 0 1.5rem;
+    overflow: hidden;
+}
+
+.accounts__title{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+.cards__container{
+    display: flex;
+    justify-content: flex-start;
+    transition: .5s;
+}
+
+.cards__carrusel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 1.8rem;
+}
+
+
+.card{
+    position: relative;
+    margin: 1rem 0;
+    --bs-card-border-radius: 1rem !important;
+    width: 20.5rem !important; 
+    height: 12rem !important;
+    transition: .5s;
+}
+
+.card:hover{
+    transform: translateY(-.5rem)}
+
+.name__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+    border-bottom: 1px solid black;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1rem;
+}
+
+.container__picture__name{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e4166;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #0e4166;
+}
+
+.container__picture__name__txt{
+    margin-top: 1rem;
+    font-size: .9rem;
+    color: white;
+}
+.welcome__txt{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.welcome__txt__name{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    margin-top: -.5rem;
+}
+
+.picture__name__welcome{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.number__container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.number__txt{
+    width: 45%;
+    margin: 0;
+}
+
+.date__container{
+    margin-top: 1rem;
+}
+.email__txt{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.eye__icon{
+    filter: invert(1);
+    height: 2.5vh;
+    cursor: pointer;
+}
+.card__info{
+    color: white;
+    font-size: 1.1rem;
+    padding: 1rem;
+    z-index: 4;
+}
+
+svg {
+    border-radius: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: block;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, rgba(74, 79, 158, 0.86), #0e4166);
+}
+
+.title__account{
+    border-bottom: 3px solid white;
+    text-align: center;
+    margin-top: -1rem;
+}
+
+.btn_accounts_container{
+    margin-top: 1rem;
+    width: 20.5rem;
+    height: 3rem;
+    background-color: #0e4166;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .1s;
+    cursor: pointer;
+}
+.btn_accounts_container:hover{
+    transform: scale(1.01);
+    background-color: rgba(49, 49, 49, 0.86);
+}
+.btn_accounts__txt{
+    font-size: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: .2rem;
+}
+
+.txt_btn{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.btn_change_container{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.btn_change{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color:  rgba(74, 79, 158, 0.86);
+    color: white;
+    font-size: 1.3rem;
+    transition: .5s;
+}
+
+.btn_change:hover{
+    background-color: #636363;
+    transform: scale(1.07);
+}
+
+.btn_change p{
+    margin: 0 .3rem ;
+    margin-bottom: .2rem;
+}
+
+.account__numberInfo{
+    height: 4rem;
+    margin-bottom: 1rem;
+    font-size: .9rem;
+    font-weight: 600;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.account__numberInfo__txt{
+    font-size: 1rem;
+    margin: 0;
+}
+
+.model__setting-accounts{
+    margin-top: -18rem;
+}
+
+
+/* REQUESTED BOTONS */ 
+.requesTransaction__container{
+    width: 20rem;
+}
+.request__container__alldivs{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+.request__containers{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(74, 79, 158, 0.86);
+    height: 5rem;
+    width: 5rem;
+    border-radius: .5rem;
+    transition: .2s;
+    cursor: pointer;
+    margin-bottom: .8rem;
+    
+}
+.request__containers:hover{
+    transform: scale(1.01);
+    background-color: #444444;
+}
+
+.request__containers-disable{
+    background-color: #444444;
+    cursor: default;
+}
+
+.request__containers-disable:hover{
+    transform: scale(1);
+}
+
+
+.request__containers-extra{
+ background-color: #0e4166;
+}
+.request__img__icon-extra{
+    height: 2rem !important;
+}
+.request__img__container{
+    margin-top: .3rem;
+}
+.request__img{
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.request__img__icon{
+    height: 2.3em;
+}
+
+.request__txt{
+    text-decoration: none;
+    margin: 0;
+    font-size: .85rem;
+    color: white;
+}
+
+
+/* TABLE */ 
+.visibility{
+    background-color: white !important;
+    border-bottom:1px solid white !important;
+    border-left:1px solid white !important;
+    border-right:1px solid white !important;
+    visibility: hidden;
+}
+
+.text__balance{
+    font-size: 1.1rem;
+}
+.table_container{
+    height: 100%;
+}
+table{
+    font-size: .93rem;
+}
+
+
+.totalBalance__txt{
+    font-size: 1.2rem;
+}
+.hidden__table{
+   display: none;
+}
+
+.btn_account_container{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.btn_account_container-extra{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.txt__with{
+    text-align: justify;
+    width: 100%;
+}
+
+.main__transfer{
+    height: 87vh !important;
+}
+
+.btn_account_container-transfer{
+    width: 99%;
+    margin-top: 1rem !important;
+}
+
+.btn_account{
+    height: 3rem;
+    width: 10rem;
+    background-color: #0e4166;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+
+.btn_account:hover{
+    background-color: rgba(74, 79, 158, 0.86);
+}
+
+.thead_color{
+    background-color: rgba(74, 79, 158, 0.86);
+    color: white;
+}
+
+.table__icon{
+    height: 1rem;
+    filter:  invert(1);
+    margin-left: 1rem;
+}
+
+
+/* SLIDER */ 
+
+.slider__btn{
+    position: absolute;
+    margin: .5rem;
+    margin-top: 6rem;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(208, 209, 211, 0.86);
+    border-radius: 50%;
+    color: #0e4166;
+    font-weight: 600;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.slider__btn:hover{
+    background-color: #949494;
+    color: white;
+}
+
+.slider__left p{
+    margin-bottom:.2rem;
+    margin-right: .2rem;
+}
+
+.slider__rigth p{
+    margin-bottom:.2rem;
+    margin-left: .2rem;
+}
+
+.slider__rigth{
+    right: 0;
+}
+
+.slider__left{
+    left: 0;
+}
+.text-center {
+    font-size: 1.3rem;
+}
+.text-center a{
+    text-decoration: none;
+    color: #5658c5
+}
+
+/*  LOANS  */ 
+.loans__container{
+    width: 100%;
+    background-color: rgba(74, 79, 158, 0.86);
+    background-image: url('../assets/image/bg.jpg');
+    background-repeat: repeat;
+    margin-top: .5rem;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.txt__loan__name{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.one__loan__container{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: 2px 2px 15px -1px rgba(0, 0, 0, 0.6);
+}
+
+.one__loan__container:hover{
+    background-color: rgb(234, 240, 241);
+}
+
+.one__loan__container-without{
+    flex-direction: column;
+    align-items:  flex-start;
+}
+
+.ttl__withoutLoan{
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.txt__withoutLoan{
+    text-align: start;
+    font-size: .9rem;
+}
+
+.btn__loan{
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+    transition: .5s;
+}
+
+
+.btn__loan-color{
+    color: #0e4166;
+    font-weight: 600;
+}
+
+.btn__loan-color:hover{
+    color: white;
+}
+
+footer{
+    width: 100vw;
+    height: 3.5rem;
+    background-color: rgba(200, 203, 241, 0.86);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    font-size: 1rem;
+    bottom: 0;
+}
+.footer__logo{
+    height: 3vh;
+    margin-left: .5rem;
+}
+
+.footer__anchor{
+    text-decoration: none;
+    color: #000000;
+}
+.txt__footer{
+    margin: 0;
+    padding: 0;
+    font-size: .9rem;
+}
+
+/*CARDS*/
+
+.debit__card__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.creditdebit__left{
+    display: none;
+}
+
+.main__debitcredit__container{
+    display: flex;
+}
+
+.cards__title-debit{
+    margin-top: 1.5rem;
+}
+
+
+.cards__debitcredit__container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 1.5rem;
+}
+
+.solo__card{
+    display: flex;
+    justify-content: center;
+    width: 22.5rem;
+    height: 13rem;
+    border-radius: .8rem;
+    font-family: 'Space Mono', monospace;
+    color: white;
+    position: relative;
+    transition: all .8s linear;
+    transform-style: preserve-3d;
+    margin-bottom: 1rem;
+}
+
+.solo__card-gold{
+    background-image: url("../assets/image/goldbg.jpg");
+    background-position: -6rem;
+    background-size: 22rem;
+}
+
+.solo__card-silver{
+    filter: brightness(1.4);
+    background-image: url("../assets/image/silverbg.jpg");
+    background-position: -6rem;
+    background-size: 22rem;
+}
+
+.solo__card-titanium{
+    background-image: url("../assets/image/titanium2.jpg");
+    background-position: -6rem;
+    background-size: 22rem;
+}
+
+.solo__card-grey{
+    background-color: #424242;
+}
+
+.opacity__expired{
+    opacity: .7;
+}
+
+.text__expired{
+    font-weight: 600;
+    color: #fc5e5e;
+}
+
+.back__card, .front__card{
+    width: 22.5rem;
+    height: 13rem;
+    border-radius: .8rem;
+    position: absolute;
+}
+
+.front__card{
+    z-index: 2;
+    backface-visibility: hidden;
+}
+
+.back__card{
+    background-color: #8f8e8e;
+    z-index: 1;
+    transform: rotateY(180deg);
+}
+
+.solo__card__back-gold{
+    background-image: radial-gradient(circle, #c1be5f, #b6af4d, #aba03b, #a09127, #958210);
+}
+
+.solo__card__back-silver{
+    background-image: radial-gradient(circle, #e2e2e2, #d1d1d1, #c1c0c1, #b1b0b0, #a1a0a0);
+    color: black;
+}
+
+.solo__card__back-titanium{
+    background-image: radial-gradient(circle, #898989, #717171, #5a5a5a, #444444, #2f2f2f);
+}
+
+.solo__card__back-grey{
+    background-image: radial-gradient(circle, #c0c0c0, #bbbbb9, #b1b1af, #a7a7a7, #a0a0a0);
+}
+
+.flip__card:hover .solo__card{
+    transform: rotateY(180deg);
+}
+
+.magnetic__line__card{
+    background-color: black;
+    margin-top: 1.7rem;
+    height: 3rem;
+    width: 100%;
+}
+
+.cvv__text{
+    display: flex;
+    justify-content: end;
+    padding: 0 1.8rem;
+    margin: 0;
+    margin-top: .3rem;
+}
+
+.cvv__card__container{
+    padding: 0 1rem;
+}
+
+.cvv__card{
+    border-radius: .5rem;
+    height: 1rem;
+    width: 100%;
+    padding: 1rem;
+    color: #525252;
+    background-color: white;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.text__back__card{
+    margin-top: .3rem;
+    padding: .5rem 1rem;
+    font-size: .55rem;
+    text-align: justify;
+}
+
+.text__back__card p{
+    margin: 0;
+    padding: 0;
+}
+
+.card__type__container{
+    padding: 1rem;
+}
+
+.black__alert{
+    filter: saturate(100);
+}
+.card__type__txt{
+    border-radius: .5rem;
+    border: 2px solid white;
+    text-align: center;
+    height: 1.7rem;
+    width: 6rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    filter: blur(6);
+}
+
+.number__card{
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: .4rem 0;       
+}
+
+.text__front__card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    padding: .5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    filter: blur(6);
+}
+
+
+.txt__front{
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.txt__front-exp{
+    font-size: .7rem;
+    margin-right: .7rem;
+}
+
+.type__icon__card{
+    margin-top: 1rem;
+    width: 3rem;
+}
+
+.without__card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    width: 100%;
+    height: 13rem;
+    font-size: 1.3rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.without__card p {
+    margin: 0;
+    padding: 0;
+}
+
+.without__card__txt-secundary{
+    font-size: 1.1rem;
+}
+
+/*CROUSEL CREDIT DEBIT*/
+.crousel__container{
+    width: 100%;
+    overflow: hidden;
+}
+.carousel__creditdebit{
+    position: relative;
+    display: flex;
+    transition: .5s;
+}
+
+.slider__btn__creditdebit{
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(208, 209, 211, 0.86);
+    border-radius: 50%;
+    color: #0e4166;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+    margin-top: -7rem;
+}
+
+.slider__btn__creditdebit:hover{
+    background-color: #949494;
+    color: white;
+}
+
+.slider__creditdebit--rigth{
+    right: 0;
+    margin-right: 1rem;
+}
+
+.slider__creditdebit__left{
+    margin-left: -1.2rem;
+}
+
+
+/* INDEX*/
+.main__index{
+    padding: 0 1rem;
+    position: relative;
+}
+
+.heigth__index{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+}
+.index__background{
+    background-image: url("../assets/image/homebankingbg.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    transition: .5s;
+}
+.curved-background__curved {
+    border-bottom-left-radius: 80% 50%;
+    border-bottom-right-radius: 80% 20%;
+    height:100vh;
+    width: 100%;
+    transition: 1s;
+}
+
+.index__ttl{
+    width: 60%;
+}
+.icon__back__index{
+    filter: invert(1);
+    height: 1rem;
+}
+
+.text__animation__index__container{
+    width: 85%;
+    height: 2rem;
+    padding-left: .5rem 0;
+    border-radius: .5rem 0;
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
+}
+
+.text__animation__index{
+    animation: 5s ease-in-out move infinite alternate;
+    transform: translateY(0);
+}
+
+.text__animation__index h2{
+    font-size: 1.4rem;
+}
+
+@keyframes move{
+    0%{transform: translateY(0);}
+    15%{transform: translateY(0rem);}
+    40%{transform: translateY(-2.2rem);}
+    65%{transform: translateY(-4.4rem);}
+    90%{transform: translateY(-6.5rem);}
+    100%{transform: translateY(-6.5rem);}
+}
+
+.signIn__container{
+    display: flex;
+    font-size: 1.23rem;
+    font-weight: 600;
+}
+.signIn__p{
+    text-align: center;
+    margin-top: 1rem;
+    border-radius: .5rem;
+    padding: .5rem;
+    background-color:rgba(37, 72, 138, 0.8);
+    color: white;
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+    transition: .5s;
+    margin-bottom: 0 !important;
+}
+
+.text__describe__signIn{
+    padding: 0 .5rem;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.signIn{
+    margin-right: 2rem;
+}
+
+.signIn__p:hover{
+    background-color:rgba(90, 90, 90, 0.8);
+    transform: scale(1.05);
+}
+
+.back__container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.back__loginRegister{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    width: 5rem;
+    padding: .3rem .5rem;
+    border-radius: .5rem;
+    background-color: #5e5e5e;
+    color: white;
+    transition: .5s;
+}
+
+.back__loginRegister:hover{
+    background-color: rgb(51, 86, 151);
+    transform: scale(1.03);
+}
+.info__section{
+    min-height: 54rem;
+}
+
+.info__homebanking__index__container{
+    width: 100%;
+    min-height: 10rem;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.info__homebanking__index{
+    width: 100%;
+    min-height: 12rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    transform: translateY(21rem);
+    opacity: 0;
+    transition: 2s;
+}
+
+.info__homebanking__index__position{
+    transform: translateY(0);
+    opacity: 1;
+    transition: 2s;
+}
+
+.info__homebanking__img{
+    display: none;
+    height: 10rem;
+    width: 10rem;
+    margin-right: 8rem;
+}
+
+.info__homebanking__img img{
+    border-radius: 1rem;
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+    height: 20rem;
+    width: 16rem;
+    object-fit: cover;
+}
+
+.info__homebanking__txt__container{
+    width: 100%;
+}
+
+.info__homebanking__txt__container h3{
+    text-align: center;
+    color: #0e4166;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #0e4166;
+}
+
+.info__homebanking__txt__container p{
+    font-size: 1.2rem;
+}
+
+/*LOGIN REGISTER*/
+
+.ttl_loginRegister{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.back__loginRegister__txt{
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: .5rem;
+}
+
+
+.form__container{
+    width: 20rem;
+}
+.form__login{
+    margin-top: .5rem;
+    width: 100%;
+    min-height: 20vh;
+    background-color: rgba(231, 231, 231, 0.8);
+    border-radius: .5rem;
+    color: #000000;
+    font-size: 1.2rem;
+    padding: .3rem 1rem;
+    box-shadow: 7px 7px 15px #8a8a8a, -7px -7px 15px #dddada;
+}
+
+.form__register{
+    margin-top: .5rem;
+    width: 100%;
+    min-height: 25vh;
+    background-color: rgba(231, 231, 231, 0.8);
+    border-radius: .5rem;
+    color: #000000;
+    font-size: 1.2rem;
+    padding: .3rem 1rem;
+    box-shadow: 7px 7px 15px #8a8a8a, -7px -7px 15px #dddada;
+}
+
+
+.form__p{
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.secundary__text__form{
+    font-size: 1rem;
+    margin: 0;
+    margin-top: -.5rem;
+}
+
+.secundary__text__form--margin{
+    margin-top: -1.2rem;
+    font-weight: 600;
+}
+
+.form__p__secundary{
+    margin: 0;
+}
+input{
+    font-size: 1rem;
+    border-radius: .5rem;
+    width: 100%;
+    background-color: rgba(231, 231, 231, 0.8);
+    height: 2rem;
+    padding-left: .5rem;
+    border: none;
+    box-shadow: inset 5px 5px 6px #b7b8b8, inset -8px -8px 11px #fff;
+    transition: .5s;
+}
+
+input:focus{
+    outline: none;
+    transform: scale(1.02);
+    background-color:white;
+}
+
+select:focus{
+    outline: none;
+    transform: scale(1.02);
+    background-color:white;
+}
+
+.form__input__error{
+    border: 2px solid #ff0000;
+}
+.error__login{
+    height: 1.3rem;
+    color: red;
+    font-weight: 600;
+    transition: .5s;
+    font-size: 1rem;
+    transition: .5s;
+}
+
+.error__login-opacity{
+    opacity: 0;
+}
+
+.error__login p{
+    margin: 0;
+    padding: 0;
+}
+.btn__signIn{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    background-color: rgba(117, 120, 185, 0.86);
+    border-radius: .3rem;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: .5s;
+    border: none;
+}
+
+.btn__signIn:hover{
+    background-color: #0e4166;
+    transform: scale(1.01);
+    color: white;
+}
+.info__homebanking__ttl{
+    font-size: 1.2rem;
+    border-bottom: 1px solid black;
+}
+.info__homebanking{
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230e4166' fill-opacity='0.04'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+    border-radius: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.info__homebanking p{
+    margin: 0;
+}
+
+.forget__password__txt{
+    font-size: 1rem;
+    text-align: center;
+    margin: .4rem 0;
+    font-weight: 600;
+    color: #0e4166;
+    cursor: pointer;
+    transition: .5s;
+}
+.forget__password__txt:hover{
+    transform: scale(1.05);
+}
+
+.alert__forgetPassword{
+    width: 90%;
+    min-height: 18.5rem;
+    background-color: rgb(230, 230, 230);
+    border-radius: 1rem;
+    padding: 1rem 2rem ;
+}
+
+.alert__forgetPassword-margin{
+    margin-top: -55rem;
+    position: fixed;
+}
+
+.alert__forgetPassword h3{
+    text-align: center;
+    color: #0e4166;
+    border-bottom: 2px solid #0e4166;
+    margin-bottom: 1rem;
+}
+
+.alert__forgetPassword label{
+    margin-top: .5rem;
+    width: 100%;
+}
+
+.close__forgetPassword__container{
+    display: flex;
+    justify-content: flex-end;
+    height: 1rem;
+    margin-bottom: .5rem;
+}
+
+.close__forgetPassword__container img{
+    height: .8rem;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.close__forgetPassword__container img:hover{
+    transform: scale(1.15);
+}
+
+/* SETTING */
+.main__setting{
+    position: relative;
+    height: 84vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 0rem 1.5rem;
+} 
+
+.main__setting-exchange{
+    min-height: 100vh;
+}
+
+.setting__img-exchange{
+    margin-left: -2rem;
+}
+
+.model__setting__container{
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(3, 22, 49, 0.7);
+}
+
+
+.model__setting{
+    width: 70%;
+    height: 40%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1rem;
+}
+
+.model__gif__setting{
+    width: 12rem;
+}
+
+.model__txt__setting{
+    font-size: 1.4rem;
+}
+
+.setting__title{
+    background-color: white;
+    margin: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.setting__img{
+    display: none;
+}
+.img__form__container__setting{
+    width: 100%;
+}
+.form__container__setting{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.form__setting{
+    margin-top: .5rem;
+    width: 100%;
+    min-height: 20vh;
+    background-color: rgba(231, 231, 231, 0.8);
+    border-radius: .5rem;
+    color: #000000;
+    font-size: 1.2rem;
+    padding: 1rem 1rem;
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+}
+
+
+
+.btn__alert__setting{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -1rem;
+    gap: 1rem;
+}
+
+.signIn__p-setting{
+    width: 30%;
+}
+
+/* ADD ACCOUNT*/
+.addAccount__container{
+    width: 100%;
+    height: 2.8rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+} 
+
+.btn__addAccount__accounts-a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn__addAccount__accounts{
+    display: flex ;
+    justify-content: center;
+    align-items: center ;
+    cursor: pointer;
+    background-color: #0e4166;
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+    height: 1.8rem;
+    border-radius: .5rem;
+    width: 11rem;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: .5s;
+    margin-right: .5rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.btn__addAccount__accounts:hover{
+    background-color: #646464;
+    transform: scale(1.02);
+}
+
+/* CREATE CARD */
+.alert__createdCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.secundary__text__alert{
+    margin: 0;
+    margin-top: -1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+.alert__createdCard p{
+    font-size: 1.3rem;
+}
+
+.img__lottieAlert{
+    width: 9rem;
+}
+
+.img__lottieAlert-setting{
+    width: 10rem;
+}
+
+#alertInnerMessage{
+    font-size: 1.1rem;
+}
+.checkbox__container__createCard{
+    display: flex;
+}
+
+.main__createdCard{
+    height: 86rem;
+    position: relative;
+}
+
+.img__form__container__cardCreated{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+.createdCard__img{
+    height: 47rem;
+    width: 100%;
+    object-fit: cover;
+    display: none;
+}
+.check__separate{
+    margin-right: 1rem;
+}
+
+label, .txt__label{
+    font-size: 1rem;
+}
+
+.label__separate{
+    margin-top: 2rem;
+}
+
+.benefits__separate{
+    margin-top: .7rem;
+}
+
+.benefits__cards__container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    gap: 1rem;
+}
+
+.benefits__cards{
+    background-color: rgba(112, 121, 148, 0.4);
+    color: #5a5a5a;
+    border-radius: 1rem;
+    width: 100%;
+    padding: .5rem;
+    transition: .5s;
+}
+
+.benefits__cards-color{
+    background-color: rgba(112, 121, 148, 0.4);
+    color: #5a5a5a;
+    border-radius: 1rem;
+    width: 100%;
+    padding: .5rem;
+    transition: .5s;
+}
+
+.benefits__cards p{
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #0e4166;
+    margin-bottom: .5rem;
+}
+
+.benefits__cards-color p{
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #0e4166;
+    margin-bottom: .5rem;
+}
+
+.benefits__active{
+    color: #0e4166;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+}
+
+
+
+.form-check-input[type=radio]{
+    box-shadow: none;
+    border: 2px solid #668297;
+}
+
+.form-check-input:disabled{
+    opacity: .2 !important;
+}
+/* BTN */
+.btn-8 {
+    background-color: #f0ecfc;
+    background-image: linear-gradient(315deg, #4f51a7 0%, #3d4e9b 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+.btn-8 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.btn-8:before,
+.btn-8:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: #0e4166;
+    transition: all 0.8s ease;
+}
+.btn-8:before{
+    height: 0%;
+    width: 2px;
+}
+.btn-8:after {
+    width: 0%;
+    height: 2px;
+}
+.btn-8:hover:before {
+    height: 100%;
+}
+.btn-8:hover:after {
+    width: 100%;
+}
+.btn-8:hover{
+    background: rgba(255, 255, 255, 0.3);;
+}
+.btn-8 span:hover{
+    color: #0e4166;
+}
+.btn-8 span:before,
+.btn-8 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #0e4166;
+    transition: all 0.8s ease;
+}
+.btn-8 span:before {
+    width: 2px;
+    height: 0%;
+}
+.btn-8 span:after {
+    height: 2px;
+    width: 0%;
+}
+.btn-8 span:hover:before {
+    height: 100%;
+}
+.btn-8 span:hover:after {
+    width: 100%;
+}
+
+/**/
+
+.btn-8-red {
+    background-color: #f0ecfc;
+    background-image: linear-gradient(315deg, #a74f4f 0%, #9b3d3d 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+.btn-8-red span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.btn-8-red:before,
+.btn-8-red:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: #660e1d;
+    transition: all 0.8s ease;
+}
+.btn-8-red:before{
+    height: 0%;
+    width: 2px;
+}
+.btn-8-red:after {
+    width: 0%;
+    height: 2px;
+}
+.btn-8-red:hover:before {
+    height: 100%;
+}
+.btn-8-red:hover:after {
+    width: 100%;
+}
+.btn-8-red:hover{
+    background: rgba(255, 255, 255, 0.3);;
+}
+.btn-8-red span:hover{
+    color: #0e4166;
+}
+.btn-8-red span:before,
+.btn-8-red span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #660e1d;
+    transition: all 0.8s ease;
+}
+.btn-8-red span:before {
+    width: 2px;
+    height: 0%;
+}
+.btn-8-red span:after {
+    height: 2px;
+    width: 0%;
+}
+.btn-8-red span:hover:before {
+    height: 100%;
+}
+.btn-8-red span:hover:after {
+    width: 100%;
+}
+
+.ownAccount__select{
+    display: flex;
+    flex-direction: column;
+}
+
+.ownAccount__select:focus{
+    outline: none;
+}
+
+.ownAccount__select button, input, optgroup, select, textarea {
+    font-size: 1rem;
+    border-radius: .5rem;
+    width: 100%;
+    background-color: rgba(231, 231, 231, 0.8);
+    height: 2rem;
+    padding-left: .5rem;
+    border: none;
+    box-shadow: inset 5px 5px 6px #b7b8b8, inset -8px -8px 11px #fff;
+    transition: .5s;
+}
+
+.hidden__container{
+    display: none;
+}
+
+/*LOAN APPLICATION*/
+.main__loan{
+    position: relative;
+    height: 90vh;
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 0rem 1.5rem;
+} 
+
+.margin__input__loans{
+    margin-top: -1rem;
+    font-size: .9rem;
+}
+
+/* EXCHANGE*/
+
+.main__exchgange{
+    position: relative;
+    height: 90vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 0rem 1.5rem;
+} 
+
+.exchanges__container{
+    margin-top: .5rem;
+    width: 53vw;
+    min-height: 13vh;
+    background-color: rgba(231, 231, 231, 0.8);
+    border-radius: .5rem;
+    color: #000000;
+    font-size: 1.2rem;
+    padding: 1rem 1rem;
+    box-shadow: 12px 12px 22px -18px rgba(0,0,0,.8);
+    display: flex;
+    justify-content: center;
+}
+
+.btn_account_container-extraexchange{
+    align-items: flex-end
+}
+
+.exchanges{
+    width: 20%;
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+.exchanges p{
+    margin: 0;
+    text-align: center;
+}
+
+/*ADMIN*/
+
+.img__manager__position{
+   transform: translateY(-5.2rem);
+}
+
+.main__admin__loan{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 0rem 1.5rem;
+    height: 130vh;
+}
+
+
+.margin__input__rigth{
+    margin-right: 2rem;
+}
+/* RESPONSIVE */
+
+@media (min-width: 425px) {
+
+    .card{
+        width: 23.5rem !important; 
+    }
+
+    .btn_accounts_container{
+        width: 23rem;
+    }
+
+    .btn__loan{
+        width: 100%;
+    }
+
+    .requesTransaction__container-card{
+        width: 23rem;
+    }
+
+    .requesTransaction__container{
+        width: 23.5rem;
+    }
+
+    
+    .main__createdCard{
+        height: 80rem;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .hidden__table{
+        display: block;
+     }
+
+    .main__transactions{
+        height: 31.5rem;
+    }
+    .navbar-brand{
+        font-size: 1.2rem !important;
+    }
+    .navbar{
+        padding: 0 1.5rem !important;
+    }
+
+    .name__container{
+        padding: 0 1.5rem;
+    }
+    
+    .navbar-toggler-icon{
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .icon__nav{
+        height: 6.5vh;
+        margin-right: .5rem;
+    }
+
+    
+    .btn_accounts_container{
+        width: 19.7rem;
+    }
+
+    .cards__carrusel{
+        padding-left: 1rem;
+        padding-right: 4rem;
+    }
+
+    .cards__loans__container{
+        width: 100%;
+        margin: 0;
+        padding: 0 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .container-fluid{
+        --bs-gutter-x: 0 !important;
+    }
+    
+    .card{
+        --bs-card-border-radius: 1rem !important;
+        width: 19rem !important; 
+        height: 12rem!important;
+    }
+
+    .email__txt{
+        font-size: 1.4rem;
+        margin-top: -.5rem;
+    }
+
+    .accounts__title{
+        margin-left: 0;
+    }
+    
+    .card__info{
+        font-size: 1.1rem;
+        padding: 1rem 1rem;
+    }
+
+    .requesTransaction__container{
+        width: 19rem;
+    }
+
+    .request__container__alldivs{
+        width: 100%;
+    }
+
+    .btn_accounts_container{
+        width: 100%;
+    }
+    svg {
+        border-radius: 1rem;
+    }
+
+    footer{
+        height: 3.5rem;
+        font-size: 1.1rem;
+        padding: 2;
+        margin: 0;
+       
+    }
+    .footer__logo{
+        height: 3vh;
+    }
+
+    .footer__txt__container{
+        display: flex;
+    }
+
+    .txt__footer{
+        font-size: 1rem;
+    }
+    .txt__footer--name{
+        margin-left: .5rem;
+    }
+    
+    .slider__btn{
+        margin: 1rem;
+        margin-top: 7rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .main__debitcredit__container{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .cards__debitcredit__container{
+        width: 100%;
+        
+        padding: 0 3rem;
+        position: relative;
+    }
+
+
+    .loans{
+        margin-bottom: 1rem;
+    }
+
+    .main__index{
+        padding: 0 2rem;
+    }
+
+    .index__ttl{
+        width: 100%;
+    }
+    
+    .text__animation__index__container{
+        width: 61%;
+        height: 2rem;
+    }
+    
+    .text__animation__index h2{
+        font-size: 1.6rem;
+    }
+    
+    @keyframes move{
+        0%{transform: translateY(0);}
+        15%{transform: translateY(0rem);}
+        40%{transform: translateY(-2.6rem);}
+        65%{transform: translateY(-5.2rem);}
+        90%{transform: translateY(-7.4rem);}
+        100%{transform: translateY(-7.4rem);}
+    }
+
+    .form__container{
+        width: 25rem;
+    }
+
+    .main__setting{
+        height: 83vh;
+    } 
+
+    .main__setting{
+        padding: 0rem 3rem;
+    } 
+
+    .main__createdCard{
+        height: 70rem;
+    }
+
+    .img__form__container__cardCreated{
+        padding: 0 3rem;
+    }
+
+    label, .txt__label{
+        font-size: 1.1rem;
+    }
+    
+    .account__numberInfo{
+        height: 3.5rem;
+        margin-top: 1rem;
+    }
+    .number__txt{
+        min-width: 55%;
+        margin: 0;
+    }
+
+    .info__section {
+        min-height: 50rem;
+    }
+
+    .info__homebanking__index__container{
+        width: 100%;
+        height: 20.1rem;
+        overflow: hidden;
+        margin: 3rem 0;
+    }
+
+    .info__homebanking__img{
+        height: 20rem;
+        width: 17rem;
+        display: block;
+    }
+
+    .info__homebanking__img img{
+        height: 20rem;
+        width: 23rem;
+    }
+
+    .info__homebanking__txt__container{
+        width: 100%;
+        text-align: justify;
+    }
+
+    .info__homebanking__txt__container h3{
+        font-size: 1.6rem;;
+    }
+
+    .info__homebanking__txt__container p{
+        font-size: 1.1rem;
+    }
+
+    .alert__forgetPassword{
+        width: 60%;
+    }
+    
+    .alert__forgetPassword-margin{
+        margin-top: -72rem;
+    }
+    
+    .main__transactions{
+        height: 40rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main__transactions{
+        height: 32rem;
+    }
+    .container__main{
+        display: flex;
+        justify-content: space-between;
+     }
+
+    .navbar-brand{
+        font-size: 1.3rem !important;
+    }
+    .navbar{
+        padding: 0 3rem !important;
+    }
+    
+    .icon__nav{
+        height: 7vh;
+        margin-right: 1rem;
+    }
+    
+    .accounts__title{
+        margin-left: 0rem;
+    }
+
+    .nav-link{
+        font-size: 1.3rem !important;
+        color: white !important;
+    }
+
+    .welcome__txt{
+        font-size: 1.3rem;
+    }
+    
+    .welcome__txt__name{
+        font-size: 1.9rem;
+    }
+
+    .container__picture__name{
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .cards__container{
+        width: 50vw;
+        left: 0;
+    }
+    .card__one__container{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+    }
+    .card{
+        width: 22rem !important; 
+        height: 15rem !important;
+        margin-right: 1rem;
+    }
+
+    .card__info{
+        padding: 2rem 1rem;
+        font-size: 1.2rem;
+    }
+
+    .cards__carrusel{
+        width: 46rem;
+        padding-left: 1.5rem;
+        padding-right: 3.5rem;
+        flex-direction: row;
+        align-items: center;
+    }
+    .requesTransaction__container{
+        width: 15.5rem;
+    }
+    .request__container__alldivs{
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .btn_accounts_container{
+        margin-left: 0;
+        margin-top: .4rem;
+        width: 100%;
+        height: 3rem;
+    }
+
+    .request__containers{
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        margin: .4rem 0;
+    }
+
+    .request__img__container{
+        margin: 0;
+        margin-left: 1rem;
+    }
+
+    .request__img__icon-extra{
+        height: 1.7rem !important;
+    }
+
+    
+    .request__img__icon{
+        height: 1.8rem;
+    }
+
+    .request__img{
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    .line__fortxt__request{
+        width: .2rem;
+        height: 60%;
+        margin-left: 1rem;
+        background-color: #ffffff;
+    }
+
+    .request__txt{
+        margin: 0;
+        margin-left: .3rem;
+        font-size: 1.2rem;
+    }
+    .btn_accounts__txt{
+        font-size: 1.2rem;
+    }
+    .slider__btn{
+        position: absolute;
+    }
+    .slider__left{
+        left: 0;
+    }
+
+    .img__main{
+        width: 30vw;
+
+        object-fit: cover;
+        display: inline;
+    }
+    
+    .name__container{
+        padding: 0 1.5rem;
+        margin: 0;
+    }
+
+    .email__txt{
+        font-size: 1.5rem;
+    }
+
+    .txt__loan__name{
+        font-size: 1.3rem;
+    }
+    
+    .one__loan__container{
+        font-size: 1.1rem;
+    }
+
+    footer{
+        height: 5rem;
+        margin: 0;
+    }
+    .txt__footer{
+        font-size: 1.2rem;
+    }
+   
+    .footer__logo{
+        margin-left: 1rem;
+        height: 4vh;
+    }
+    .btn_account_container{
+        display: flex;
+        justify-content: flex-end;
+        margin: 1rem 0;
+    }
+
+    .btn_account{
+        height: 3rem;
+        width: 10rem;
+        background-color: #0e4166;
+        border-radius: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .2s;
+    }
+
+    .btn_account:hover{
+        background-color: rgba(74, 79, 158, 0.86);
+    }
+
+    .thead_color{
+        background-color: rgba(74, 79, 158, 0.86);
+        color: white;
+    }
+    .slider__btn{
+        margin: 1.5rem;
+        margin-top: 8rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.7rem;
+    }
+
+    .creditdebit__left{
+        display: block;
+        margin-bottom: 0;
+        position: center;
+    }
+
+    .creditdebit__left__img{
+        height: 52rem;
+        width: 40vw;
+        object-fit: cover;
+    }
+    .main__index{
+        padding: 0 3rem;
+    }
+    
+    .text__animation__index__container{
+        width: 52%;
+        height: 2.2rem;
+    }
+    
+    .text__animation__index h2{
+        font-size: 1.7rem;
+    }
+    
+    @keyframes move{
+        0%{transform: translateY(0);}
+        15%{transform: translateY(0rem);}
+        40%{transform: translateY(-2.6rem);}
+        65%{transform: translateY(-5.2rem);}
+        90%{transform: translateY(-7.8rem);}
+        100%{transform: translateY(-7.8rem);}
+    }
+    .main__setting{
+        padding: 0;
+    }
+
+    .setting__img__container{
+        width: 40%;
+    }
+
+    .setting__img{
+        display: block;
+        width: 100%;
+        height: 82vh;
+        object-fit: cover;
+    }
+    .setting__img-exchange{
+        min-height: 90vh;
+    }
+    .img__form__container__setting{
+        display: flex;
+        justify-content: space-between;
+    } 
+    
+    .form__container__setting{
+        justify-content: flex-start;
+        width: 60%;
+        padding: 0 3rem;
+    }
+
+    
+    .model__setting{
+        width: 40%;
+        height: 60%;
+    }
+
+    .model__gif__setting{
+        width: 15rem;
+    }
+
+    .model__txt__setting{
+        font-size: 1.4rem;
+    }
+
+    .main__createdCard{
+        height: 67rem;
+    }
+
+    .img__form__container__cardCreated{
+        padding: 0;
+    }
+    
+    .createdCard__img{
+        height: 66rem;
+        display: block;
+    }
+    .check__separate{
+        margin-right: 5rem;
+    }
+    
+    .label__separate{
+        margin-top: 2rem;
+    }
+    
+    .benefits__separate{
+        margin-top: .7rem;
+    }
+
+    .benefits__cards{
+        height: 15rem;
+    }
+
+    .benefits__cards-color{
+        height: 20rem;
+    }
+    
+    .benefits__cards__container{
+        flex-direction: row;
+        gap: 2rem;
+    }
+    .account__numberInfo{
+        height: 3.5rem;
+        margin-top: 0;
+    }
+
+    .account__numberInfo__txt{
+        font-size: 1.2rem;
+    }
+
+    .account__numberInfo{
+        font-size: 1rem;
+    }
+
+    .number__txt{
+        width: 60%;
+        margin: 0;
+    }
+
+    .info__homebanking__img{
+        width: 22rem;
+    }
+
+    .info__homebanking__img img{
+        width: 28rem;
+    }
+
+    .info__homebanking__txt__container h3{
+        font-size: 1.8rem;;
+    }
+
+    .info__homebanking__txt__container p{
+        font-size: 1.1rem;
+    }
+
+    .alert__forgetPassword{
+        width: 55%;
+    }
+    
+    .alert__forgetPassword-margin{
+        margin-top: -75rem;
+    }
+
+    .img__lottieAlert{
+        width: 11rem;
+    }
+    
+    #alertInnerMessage{
+        font-size: 1.2rem;
+    }
+    .slider__btn__creditdebit{
+        margin-top: 0;
+    }
+    .back__card, .front__card {
+        width: 19rem;
+    }
+    .cards__carrusel {
+        padding-left:0rem;
+    }
+
+    .requesTransaction__container-card {
+        width: 12.5rem;
+        margin-top: -1rem;
+    }
+    
+    .solo__card {
+        width: 20rem;
+    }
+
+    .request__containers {
+        height: 2.7rem;
+    }
+
+    .request__containers-cards{
+        height: 2.6rem;
+    }
+
+    .request__img-card{
+        height: 2.1rem;
+        width: 2.1rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .name__container{
+        padding: 0 3rem;
+    }
+    .main__transactions{
+        min-height: 30.55rem;
+        padding: 0 3rem;
+    }
+    .navbar-brand{
+        font-size: 1.3rem !important;
+    }
+    
+    .accounts__title{
+        font-size: 1.8rem;
+    }
+
+    .nav-link{
+        font-size: 1.3rem !important;
+        color: white !important;
+    }
+
+    .slider__btn__container{
+        width: 100%;
+    }
+    .slider__left{
+        margin-left: 0;
+    }
+    .slider__rigth{
+        margin-right: 0;
+    }
+    .welcome__txt{
+        font-size: 1.2rem;
+    }
+    
+    .welcome__txt__name{
+        font-size: 1.8rem;
+    }
+    
+    .cards__loans__container{
+        padding: 1rem 0;
+        width: 60%;
+        margin: 0 3rem;
+        overflow: hidden;
+    }
+
+
+    .card{
+        width: 25rem !important; 
+        height: 16rem !important;
+    }
+
+    .card__info{
+        padding: 2rem;
+        font-size: 1.4rem;
+    }
+
+    .cards__container{
+        width: 100%;
+        
+    }
+
+    .card__one__container{
+        width: 65%;
+        margin-right: 1rem;
+        
+    }
+
+    .cards__carrusel{
+        padding-left: 2.5rem;
+        width: 47rem;
+        padding-right: 2rem;
+        flex-direction: row;
+        align-items: center;
+    }
+    .requesTransaction__container{
+        width: 30rem;
+    }
+    .request__container__alldivs{
+        flex-direction: column;
+        width: 110%;
+    }
+
+    .btn_accounts_container{
+        margin-left: 0;
+        margin-top: .4rem;
+        width: 110%;
+        height: 3rem;
+    }
+
+    .request__containers{
+        width: 100%;
+        height: 3.3rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        margin: .4rem 0rem;
+    }
+
+    .request__img__container{
+        margin: 0;
+        margin-left: 1rem;
+    }
+
+    .request__img{
+        height: 2.3rem;
+        width: 2.3rem;
+    }
+    .line__fortxt__request{
+        width: .2rem;
+        height: 60%;
+        margin-left: 1rem;
+        background-color: #ffffff;
+    }
+
+    .request__txt{
+        margin: 0;
+        margin-left: .3rem;
+        font-size: 1.2rem;
+    }
+    .btn_accounts__txt{
+        font-size: 1.2rem;
+    }
+
+    .email__txt{
+        font-size: 1.5rem;
+    }
+    
+    .txt__loan__name{
+        font-size: 1.3rem;
+    }
+    
+    .one__loan__container{
+        height: 4.4rem;
+        font-size: 1.1rem;
+    }
+
+    footer{
+        height: 4rem;
+        width: 100%;
+    }
+
+    .txt__footer{
+        font-size: 1.2rem;
+    }
+
+    .slider__btn{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.8rem;
+    }
+
+    .img__main{
+        width: 40%;
+    }
+
+    .solo__card{
+        width: 47rem;
+        height: 13rem;
+        padding-left: 3rem;
+    }
+
+
+    .slider__btn__creditdebit{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .slider__creditdebit__left{
+        margin-left: 0;
+    }
+
+    .main__index{
+        padding: 0 6rem;
+    }
+    
+    .text__animation__index__container{
+        width: 39%;
+        height: 2.7rem;
+    }
+    
+    .text__animation__index h2{
+        font-size: 2rem;
+    }
+    
+    .model__txt__setting{
+        font-size: 1.6rem;
+    }
+
+    @keyframes move{
+        0%{transform: translateY(0);}
+        15%{transform: translateY(0rem);}
+        40%{transform: translateY(-3rem);}
+        65%{transform: translateY(-6rem);}
+        90%{transform: translateY(-8.8rem);}
+        100%{transform: translateY(-8.8rem);}
+    }
+
+    .main__createdCard{
+        height: 51rem;
+    }
+    .createdCard__img{
+        height: 47rem;
+    }
+    .benefits__cards{
+        height: auto ;
+    }
+    
+    .account__numberInfo{
+    height: 3.5rem;
+    }
+
+    .btn__loan{
+        width: 100%;
+    }
+
+    .ttl__withoutLoan{
+        font-size: 1.2rem;
+    }
+    
+    .txt__withoutLoan{
+        text-align: start;
+        font-size: 1rem;
+    }
+
+    .benefits__cards-color{
+        height: 10rem;
+    }
+
+    .model__setting-accounts{
+        margin-top: -25rem;
+        position: fixed;
+    }
+
+    .creditdebit__left__img{
+        height: 50rem;
+        width: 40vw;
+        object-fit: cover;
+    }
+    
+    .info__homebanking__index__container{
+        margin: 5rem 0;
+    }
+    
+    .info__homebanking__img{
+        height: 20rem;
+        width: 20rem;
+        margin-right: 8rem;
+    }
+    
+    .info__homebanking__img img{
+        height: 20rem;
+        width: 30rem;
+    }
+    
+    .info__homebanking__txt__container{
+        width: 48%;
+    }
+    
+    .info__homebanking__txt__container h3{
+        font-size: 2.3rem;
+    }
+    
+    .info__homebanking__txt__container p{
+        font-size: 1.2rem;
+    }
+    .alert__forgetPassword{
+        width: 35rem;
+    }
+    
+    .alert__forgetPassword-margin{
+        margin-top: -80rem;
+    }
+    
+    .img__lottieAlert{
+        width: 13rem;
+    }
+    
+    #alertInnerMessage{
+        font-size: 1.3rem;
+    }
+    
+    .back__card, .front__card {
+        width: 22.5rem;
+    }
+
+    .requesTransaction__container-card {
+        width: 20rem;
+        margin-top: -.8rem;
+    }
+
+    .solo__card {
+        width: 22.5rem;
+        margin-right: 3rem;
+    }
+
+    .request__containers {
+        height: 3.35rem;
+    }
+    .form-check{
+        padding: 0 !important;
+        margin-right: 1rem;
+    }
+    .padding-loan{
+        padding-left: 1.7rem;
+    }
+
+    .title__account p{
+        font-size: 1.3rem;
+    }
+
+    .request__containers-cards{
+        height: 2.7rem;
+    }
+
+    .request__img-card{
+        height: 2.1rem;
+        width: 2.1rem;
+    }
+}
+
