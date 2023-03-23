@@ -89,7 +89,7 @@
                         <div class="d-flex mb-3">
                             <div v-for="loan of allLoans" class="padding-loan">
                                 <div class="form-check" >
-                                    <label >{{loan.name.slice(0,1) + loan.name.slice(1).toLowerCase()}} loan</label>
+                                    <label  v-cloak>{{loan.name.slice(0,1) + loan.name.slice(1).toLowerCase()}} loan</label>
                                     <input class="form-check-input "  type="radio"  @click="showLoanInfo(loan.name)" :id="loan.name">
                                 </div>
                             </div>                         

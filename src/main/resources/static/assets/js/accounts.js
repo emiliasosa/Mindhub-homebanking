@@ -27,7 +27,8 @@ createApp({
             type: "",
             accountId: 0,
             allLoans: [],
-            finalAccounts: []
+            finalAccounts: [],
+            loansToDescription: []
         }
    },
    created(){
@@ -50,7 +51,7 @@ createApp({
 
             axios.get(`/api/clients/current/typeOfloan`)
             .then(res => {
-                this.allLoans = res.data.filter(loan => loan.name != this.loans.name)
+                this.allLoans = res.data
                 for(loan of res.data){
                     this.loansArray.push(loan.name) 
                 }
@@ -58,11 +59,13 @@ createApp({
                 for(loan of this.loansArray){
                     if(!this.loans.map(loans => loans.name.toUpperCase()).includes(loan.toUpperCase())){
                         this.loanAvailableArray.push(loan) 
+                        this.loansToDescription=this.allLoans.filter(loanS=> loanS.name == loan)
                     }
                 }
                 this.loanAvailable = this.loanAvailableArray.join()
-            })
 
+            })
+            
            
         },
         slider(placeToMove){
