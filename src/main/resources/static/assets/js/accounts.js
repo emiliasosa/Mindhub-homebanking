@@ -45,11 +45,12 @@ createApp({
                 this.finalAccounts = this.accounts
                 this.loans = res.data.loans.sort((a, b) => a.id - b.id);
                 this.picture = res.data.picture
+                
             })
 
             axios.get(`/api/clients/current/typeOfloan`)
             .then(res => {
-                this.allLoans = res.data
+                this.allLoans = res.data.filter(loan => loan.name != this.loans.name)
                 for(loan of res.data){
                     this.loansArray.push(loan.name) 
                 }

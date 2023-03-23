@@ -95,9 +95,9 @@
                             </div>                         
                             
                         </div>
-                        <div class="secundary__text__form secundary__text__form--margin"><p class="secundary__text__form mt-1 text-danger mb-3" v-if="selectLoan ">The {{selectLoan.toLowerCase()}} loan have an {{interest}}% of interest.</p></div>
+                        <div class="secundary__text__form secundary__text__form--margin"><p class="secundary__text__form mt-1 text-danger mb-3" v-if="selectLoan && !haveLoans">The {{selectLoan.toLowerCase()}} loan have an {{interest}}% of interest.</p></div>
                         <div class="secundary__text__form secundary__text__form--margin text-danger" v-if="haveLoans"> 
-                            <p class="form__p__secundary" v-if="!haveLoans"  v-cloak>You already have {{haveLoansToShow}} loan. <span class="secundary__text__form mt-1" v-if="selectLoan">The {{selectLoan.toLowerCase()}} loan have an {{interest}}% of interest.</span></p>
+                            <p class="form__p__secundary" v-cloak>You already have {{haveLoansToShow}} loan. <span class="secundary__text__form mt-1" v-if="selectLoan">The {{selectLoan.toLowerCase()}} loan have an {{interest}}% of interest.</span></p>
                         </div>
                         <div id="ownAccount" class="ownAccount__select mt-1">
                             <label class="form__p">Select a payment.</label>
